@@ -1,5 +1,7 @@
+const express = require('express');
+const router = express.Router();
+import carController from "../controllers/CarController";
 
-import carController from "../controllers/CarController"
 /**
  * @swagger
  * components:
