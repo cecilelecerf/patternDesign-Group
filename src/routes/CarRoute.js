@@ -95,4 +95,35 @@ module.exports = (app) => {
     app.route("/car/:car_id")
         .get(carController.oneCar);
 
+
+/**
+ * @swagger
+ * /car/{car_id}:
+ *   delete:
+ *     summary: Delete
+ *     tags: [Cars]
+ *     parameters:
+ *         - in: path
+ *           name: car_id
+ *           required: true
+ *           schema:
+ *             type: string
+ *           description: Car ID to retrieve
+ *     responses:
+ *       204:
+ *         description: Delete a car
+ *       500:
+ *         description: Some server error
+ *         content:
+ *           application/json:
+ *             example:
+ *               message: "Error server."
+ *
+ */ 
+
+
+app.route("/car/:car_id")
+    .delete(carController.deleteACar);
+
+
 }
