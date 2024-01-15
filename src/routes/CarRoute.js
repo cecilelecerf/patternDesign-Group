@@ -42,6 +42,58 @@ module.exports = (app) => {
  * @swagger
  * /cars:
  *   get:
+ *     summary: Create a Car
+ *     tags: [Car]
+ *     responses:
+ *       200:
+ *         description: Create a Car.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                  $ref: '#/components/schemas/Cars'
+ *       500:
+ *         description: Some server error
+ *         content:
+ *           application/json:
+ *             example:
+ *               message: "Error server."
+ *
+ */
+    app.route("/cars")
+        .post(carController.createCar);
+
+        /**
+ * @swagger
+ * /cars:
+ *   get:
+ *     summary: Update a Car
+ *     tags: [Cars]
+ *     responses:
+ *       200:
+ *         description: Update a Car.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                  $ref: '#/components/schemas/Cars'
+ *       500:
+ *         description: Some server error
+ *         content:
+ *           application/json:
+ *             example:
+ *               message: "Error server."
+ *
+ */
+    app.route("/cars/:car_id")
+    .patch(carController.updateCar);
+
+/**
+ * @swagger
+ * /cars:
+ *   get:
  *     summary: List all of Cars
  *     tags: [Cars]
  *     responses:
@@ -124,6 +176,4 @@ module.exports = (app) => {
 
 app.route("/car/:car_id")
     .delete(carController.deleteACar);
-
-
 }
