@@ -24,7 +24,8 @@ exports.updateCar = async (req, res) => {
         res.status(200).json({ message: `Car updated with id: ${car.id}`, car });
     } catch (error) {
         res.status(500).json({ message: 'Error updating the car' });
-      
+    }
+};
 exports.listenAllCars = async(_req, res) =>{
     try{
         const cars = await Car.find({})
@@ -34,6 +35,7 @@ exports.listenAllCars = async(_req, res) =>{
         res.status(500).json({message: "Error server."})
     }
 }
+
 exports.oneCar = async(req, res)=>{
     try{
         const car = await Car.findById(req.params.car_id);
