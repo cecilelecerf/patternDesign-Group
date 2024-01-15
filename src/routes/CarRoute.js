@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const carController = require("../controllers/CarController");
+const Car = require ("../controllers/CarController")
 
 /**
  * @swagger
@@ -29,7 +29,7 @@ const carController = require("../controllers/CarController");
  *           description: Brand name
  *         model:
  *           type: String
- *           description: Car model name
+ *           description:Car model name
  *         doorsNumber:
  *           type: String
  *           description: Number of doors in the car
@@ -64,7 +64,7 @@ module.exports = (app) => {
  *
  */
     app.route("/cars")
-        .post(carController.createCar);
+        .post(Car.createCar());
 
         /**
  * @swagger
@@ -90,7 +90,7 @@ module.exports = (app) => {
  *
  */
     app.route("/cars/:car_id")
-    .patch(carController.updateCar);
+    .patch(Car.updateCar());
 
 /**
  * @swagger
@@ -116,7 +116,7 @@ module.exports = (app) => {
  *
  */
     app.route("/cars")
-        .get(carController.listenAllCars);
+        .get(Car.listenAllCars());
 
 /**
  * @swagger
@@ -147,7 +147,7 @@ module.exports = (app) => {
  *
  */
     app.route("/car/:car_id")
-        .get(carController.oneCar);
+        .get(Car.oneCar());
 
 
 /**
@@ -177,5 +177,5 @@ module.exports = (app) => {
 
 
 app.route("/car/:car_id")
-    .delete(carController.deleteACar);
+    .delete(Car.deleteACar());
 }
