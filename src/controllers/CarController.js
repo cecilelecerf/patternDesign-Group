@@ -61,5 +61,5 @@ class CarController {
     };
 };
 
-module.exports = CarController;
+module.exports = new CarController();
 

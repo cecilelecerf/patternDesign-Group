@@ -29,7 +29,7 @@ const Car = require ("../controllers/CarController")
  *           description: Brand name
  *         model:
  *           type: String
- *           description:Car model name
+ *           description: Car model name
  *         doorsNumber:
  *           type: String
  *           description: Number of doors in the car
@@ -64,7 +64,7 @@ module.exports = (app) => {
  *
  */
     app.route("/cars")
-        .post(Car.createCar());
+        .post(Car.createCar);
 
         /**
  * @swagger
@@ -90,7 +90,7 @@ module.exports = (app) => {
  *
  */
     app.route("/cars/:car_id")
-    .patch(Car.updateCar());
+    .patch(Car.updateCar);
 
 /**
  * @swagger
@@ -116,7 +116,7 @@ module.exports = (app) => {
  *
  */
     app.route("/cars")
-        .get(Car.listenAllCars());
+        .get(Car.listenAllCars);
 
 /**
  * @swagger
@@ -147,7 +147,7 @@ module.exports = (app) => {
  *
  */
     app.route("/car/:car_id")
-        .get(Car.oneCar());
+        .get(Car.oneCar);
 
 
 /**
@@ -177,5 +177,5 @@ module.exports = (app) => {
 
 
 app.route("/car/:car_id")
-    .delete(Car.deleteACar());
+    .delete(Car.deleteACar);
 }
