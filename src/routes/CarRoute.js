@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-import carController from "../controllers/CarController";
+const carController = require("../controllers/CarController");
 
 /**
  * @swagger
@@ -29,7 +29,7 @@ import carController from "../controllers/CarController";
  *           description: Brand name
  *         model:
  *           type: String
- *           description:Car model name
+ *           description: Car model name
  *         doorsNumber:
  *           type: String
  *           description: Number of doors in the car

@@ -1,16 +1,11 @@
-import Car from "../models/CarModel";
+const Car =  require("../models/CarModel");
 
 exports.createCar = async (req, res) => {
+    const newCar = new Car({releaseYear : req.body.releaseYear, salesNumber : req.body.salesNumber, brand : req.body.brand, model : req.body.model, doorsNumber : req.body.doorsNumber });
     try {
-        const newCar = new Car({ ...req.body });
-        try {
-            const car = await newCar.save();
-            res.status(201).json({ message: `Car created with id: ${car.id}` });
-        } catch (error) {
-            res.status(500).json({ message: 'Error saving the car' });
-        }
-    } catch (error) {
-        res.status(500).json({ message: 'Car not created' });
+        const car = await newCar.save();
+        res.status(201).json({ message: `Car created with id: ${car.id}` });        } catch (error) {
+        res.status(500).json({ message: error });
     }
 };
 

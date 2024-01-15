@@ -1,4 +1,5 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
+
 const Schema = mongoose.Schema;
 let carSchema = new Schema ({
     releaseYear: {
@@ -16,7 +17,7 @@ let carSchema = new Schema ({
         required : true,
     },
     doorsNumber:{
-        type : String,
+        type : Number,
         required : true
     },
     createdAt : {

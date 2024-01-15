@@ -2,8 +2,12 @@ const express = require('express');
 const app = express();
 const port = 3003;
 const swaggerui = require("swagger-ui-express");
-const swaggerjsdoc = require("swagger-jsdoc")
+const swaggerjsdoc = require("swagger-jsdoc");
+const CarRoute = require("./routes/CarRoute");
 
+
+CarRoute(app);
+ 
 const mongoose = require ("mongoose");
 mongoose.connect('mongodb://mongo/apinode')
 
