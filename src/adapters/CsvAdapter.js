@@ -1,16 +1,18 @@
-const DataAdapter = require('./DataAdapter');
 const CsvParser = require('../utils/CsvParser');
 const Vehicle = require('../models/VehicleModel');
 
 class CsvAdapter {
     constructor(fileName) {
-        super();
         this.fileName = fileName;
     }
     
     async readCsv() {
-        const csvData = await CsvParser.readCsvFile(this.fileName);
-        return this.convertToVehicles(csvData);
+        try{
+            const csvData = await CsvParser.readCsvFile(this.fileName);
+            return this.convertToVehicles(csvData);
+        }catch(error){
+            console.log(error)
+        }
     }
     
     convertToVehicles(csvData) {

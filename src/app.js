@@ -5,20 +5,19 @@ const swaggerui = require("swagger-ui-express");
 const swaggerjsdoc = require("swagger-jsdoc");
 const CarRoute = require("./routes/CarRoute");
 const MotorcycleRoute = require("./routes/MotorcycleRoute");
+const CsvRoute = require("./routes/CsvRoutes")
 
 
-CarRoute(app);
-MotorcycleRoute(app);
- 
+
 const mongoose = require ("mongoose");
 mongoose.connect('mongodb://mongo/apinode')
 
 app.use(express.urlencoded());
 app.use(express.json());
 
-const csvRoutes = require('./routes/CsvRoutes');
-app.use('/api', csvRoutes); // Ajout de la route CSV
-
+CarRoute(app);
+MotorcycleRoute(app);
+CsvRoute(app);
 const options = {
   definition:{
     openapi : "3.0.0",
