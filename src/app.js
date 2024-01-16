@@ -11,7 +11,7 @@ CarRoute(app);
 MotorcycleRoute(app);
  
 const mongoose = require ("mongoose");
-mongoose.connect('mongodb://mongo/apinode')
+mongoose.connect('mongodb://mongo/apivehicle')
 
 app.use(express.urlencoded());
 app.use(express.json());
