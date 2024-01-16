@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Motorcycle = require ("../controllers/Motorcycle")
+const Motorcycle = require ("../controllers/MotorcycleController")
 
 /**
  * @swagger
@@ -60,7 +60,7 @@ module.exports = (app) => {
  *
  */
     app.route("/motorcycles")
-        .post(Motorcycle.createCar);
+        .post(Motorcycle.createVehicle);
 
         /**
  * @swagger
@@ -86,7 +86,7 @@ module.exports = (app) => {
  *
  */
     app.route("/motorcycles/:car_id")
-    .patch(Motorcycle.updateCar);
+    .patch(Motorcycle.updateVehicle);
 
 /**
  * @swagger
@@ -112,7 +112,7 @@ module.exports = (app) => {
  *
  */
     app.route("/motorcycles")
-        .get(Motorcycle.listenAllCars);
+        .get(Motorcycle.listenAllVehicles);
 
 /**
  * @swagger
@@ -143,7 +143,7 @@ module.exports = (app) => {
  *
  */
     app.route("/motorcycle/:car_id")
-        .get(Motorcycle.oneCar);
+        .get(Motorcycle.oneVehicle);
 
 
 /**
@@ -173,5 +173,5 @@ module.exports = (app) => {
 
 
 app.route("/motorcycle/:car_id")
-    .delete(Motorcycle.deleteACar);
+    .delete(Motorcycle.deleteAVehicle);
 }

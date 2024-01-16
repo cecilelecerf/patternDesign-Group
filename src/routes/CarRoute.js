@@ -64,9 +64,10 @@ module.exports = (app) => {
  *
  */
     app.route("/cars")
-        .post(Car.createCar);
+        .post(Car.createVehicle);
 
-        /**
+        
+/**
  * @swagger
  * /cars:
  *   get:
@@ -90,7 +91,7 @@ module.exports = (app) => {
  *
  */
     app.route("/cars/:car_id")
-    .patch(Car.updateCar);
+    .patch(Car.updateVehicle);
 
 /**
  * @swagger
@@ -116,7 +117,7 @@ module.exports = (app) => {
  *
  */
     app.route("/cars")
-        .get(Car.listenAllCars);
+        .get(Car.listenAllVehicles);
 
 /**
  * @swagger
@@ -147,7 +148,7 @@ module.exports = (app) => {
  *
  */
     app.route("/car/:car_id")
-        .get(Car.oneCar);
+        .get(Car.oneVehicle);
 
 
 /**
@@ -177,5 +178,5 @@ module.exports = (app) => {
 
 
 app.route("/car/:car_id")
-    .delete(Car.deleteACar);
+    .delete(Car.deleteAVehicle);
 }

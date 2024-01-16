@@ -4,9 +4,11 @@ const port = 3003;
 const swaggerui = require("swagger-ui-express");
 const swaggerjsdoc = require("swagger-jsdoc");
 const CarRoute = require("./routes/CarRoute");
+const MotorcycleRoute = require("./routes/MotorcycleRoute");
 
 
 CarRoute(app);
+MotorcycleRoute(app);
  
 const mongoose = require ("mongoose");
 mongoose.connect('mongodb://mongo/apinode')
