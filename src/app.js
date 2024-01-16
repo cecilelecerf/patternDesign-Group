@@ -2,7 +2,8 @@ const express = require('express');
 const app = express();
 const port = 3003;
 const swaggerui = require("swagger-ui-express");
-const swaggerjsdoc = require("swagger-jsdoc")
+const swaggerjsdoc = require("swagger-jsdoc");
+const vehicleRoutes = require('./routes/VehicleRoutes');
 
 const mongoose = require ("mongoose");
 mongoose.connect('mongodb://mongo/apinode')
@@ -10,6 +11,7 @@ mongoose.connect('mongodb://mongo/apinode')
 app.use(express.urlencoded());
 app.use(express.json());
 
+app.use('/api', vehicleRoutes);
 
 const options = {
   definition:{
