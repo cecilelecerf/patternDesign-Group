@@ -1,5 +1,4 @@
 const Vehicle = require("../models/VehicleModel");
-const CsvAdapter = require('../adapters/CsvAdapter');
 const LoggerObserver = require("../services/observer/loggerObserver")
 
 class VehicleController {
@@ -15,24 +14,28 @@ class VehicleController {
      
     createVehicle = async (req, res) => {
         try {
-            const vehicleData = req.body;
-            const newVehicle = new Vehicle(vehicleData);
+            // const vehicleData = req.body;
+            const newVehicle = new Vehicle({...req.body});
             await newVehicle.save();
     
-            // Notify the logger observer with the success message
-            this.loggerObserver.update('Vehicle created successfully');
-    
-            // Return success response
-            return res.status(200).json({ message: 'Vehicle created successfully' });
+            if (res && res.status) {
+                res.status(200).json('ok');
+
+                // Notify the logger observer with the response message
+                this.loggerObserver.update('Vehicle created successfully');
+            }
         } catch (error) {
-            // Notify the logger observer with the error message
-            this.loggerObserver.update('Error creating the vehicle');
-    
-            // Handle errors and return error response
-            console.error(error.message, req.body); // Log the error and request body for debugging
-            return res.status(500).json({ message: 'Error creating the vehicle' });
-        }
+            // if (res && res.status) {
+                console.log
+                res.status(500).json("Error creating the vehicle");
+
+                // Notify the logger observer with the error message
+                this.loggerObserver.update('Error creating the vehicle');
+            // }
+
+        } 
     };
+    
     
     updateVehicle = async (req, res) => {
         try {

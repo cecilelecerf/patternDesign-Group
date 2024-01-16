@@ -1,5 +1,6 @@
 const CsvParser = require('../utils/CsvParser');
 const Vehicle = require('../models/VehicleModel');
+const VehicleController = require('../controllers/VehicleController');
 
 class CsvAdapter {
     constructor(fileName) {
@@ -16,10 +17,8 @@ class CsvAdapter {
                 salesNumber: data.salesNumber,
             }));
 
-            for (const vehicle of vehicles) {
-                await vehicle.save();
-            }
-            return { success: true, message: 'Véhicules importés avec succès' };
+            await VehicleController.createVehicle({ body: { vehicles } }, null);
+
         } catch (error) {
             return { success: false, message: 'Erreur lors de l\'importation', error: error.message };
         }
