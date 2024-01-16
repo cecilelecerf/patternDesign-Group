@@ -2,7 +2,7 @@ const DataAdapter = require('./DataAdapter');
 const CsvParser = require('../utils/CsvParser');
 const Vehicle = require('../models/VehicleModel');
 
-class CsvAdapter extends DataAdapter {
+class CsvAdapter {
     constructor(fileName) {
         super();
         this.fileName = fileName;

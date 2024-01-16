@@ -1,4 +1,6 @@
-const Vehicle = require("../models/VehicleModel")
+const Vehicle = require("../models/VehicleModel");
+const CsvAdapter = require('../adapters/CsvAdapter');
+
 class VehicleController {
     constructor(brand, model, releaseYear = null, salesNumber = null){
         this.brand = brand,
