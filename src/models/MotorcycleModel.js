@@ -1,10 +1,14 @@
-const mongoose = require('mongoose');
-const Vehicle = require('./VehicleModel');
+const mongoose = require("mongoose");
 
-const motorcycleSchema = new mongoose.Schema({
-    hasSidecar: { type: Boolean, default: false }
+const Schema = mongoose.Schema;
+let motorcycleSchema = new Schema ({
+
+    hasSideCar:{
+        type : Boolean,
+        required : true,
+        default : false
+    },
 });
 
-const Motorcycle = Vehicle.discriminator('Motorcycle', motorcycleSchema);
-
-module.exports = Motorcycle;
+const Motorcycle = Vehicle.discriminator("Motorcycle", motorcycleSchema)
+module.exports = { Motorcycle }
