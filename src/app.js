@@ -16,6 +16,8 @@ mongoose.connect('mongodb://mongo/apinode')
 app.use(express.urlencoded());
 app.use(express.json());
 
+const csvRoutes = require('./routes/CsvRoutes');
+app.use('/api', csvRoutes); // Ajout de la route CSV
 
 const options = {
   definition:{
