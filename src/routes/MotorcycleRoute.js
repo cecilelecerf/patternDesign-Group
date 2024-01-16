@@ -1,38 +1,34 @@
 const express = require('express');
 const router = express.Router();
-const Car = require ("../controllers/CarController")
+const Motorcycle = require ("../controllers/MotorcycleController")
 
 /**
  * @swagger
  * components:
  *   schemas:
- *     Cars:
+ *     Motorcycles:
  *       type: object
  *       required:
  *         - brand
  *         - model
- *         - doorsNumber
  *         - createAt
  *         - _id
  *       properties:
  *         _id:
  *             type: string
- *             description: Car Id (unique)
+ *             description: Motorcycle Id (unique)
  *         releaseYear:
  *           type: Date
- *           description: Date of the Release car
+ *           description: Date of the Release motorcycle
  *         salesNumber:
  *           type: Number
- *           description: Number of cars sold
+ *           description: Number of motorcycles sold
  *         brand:
  *           type: String
  *           description: Brand name
  *         model:
  *           type: String
- *           description: Car model name
- *         doorsNumber:
- *           type: String
- *           description: Number of doors in the car
+ *           description: Motorcycle model name
  *         createdAt:
  *           type: Data
  *           description : Date of created
@@ -42,19 +38,19 @@ module.exports = (app) => {
 
 /**
  * @swagger
- * /cars:
+ * /motorcycles:
  *   get:
- *     summary: Create a Car
- *     tags: [Car]
+ *     summary: Create a Motorcycle
+ *     tags: [Motorcycle]
  *     responses:
  *       200:
- *         description: Create a Car.
+ *         description: Create a Motorcycle.
  *         content:
  *           application/json:
  *             schema:
  *               type: array
  *               items:
- *                  $ref: '#/components/schemas/Cars'
+ *                  $ref: '#/components/schemas/motorcycles'
  *       500:
  *         description: Some server error
  *         content:
@@ -63,25 +59,24 @@ module.exports = (app) => {
  *               message: "Error server."
  *
  */
-    app.route("/cars")
-        .post(Car.createVehicle);
+    app.route("/motorcycles")
+        .post(Motorcycle.createVehicle);
 
-        
-/**
+        /**
  * @swagger
- * /cars:
+ * /motorcycles:
  *   get:
- *     summary: Update a Car
- *     tags: [Cars]
+ *     summary: Update a Motorcycle
+ *     tags: [Motorcycles]
  *     responses:
  *       200:
- *         description: Update a Car.
+ *         description: Update a Motorcycle.
  *         content:
  *           application/json:
  *             schema:
  *               type: array
  *               items:
- *                  $ref: '#/components/schemas/Cars'
+ *                  $ref: '#/components/schemas/motorcycles'
  *       500:
  *         description: Some server error
  *         content:
@@ -90,24 +85,24 @@ module.exports = (app) => {
  *               message: "Error server."
  *
  */
-    app.route("/cars/:car_id")
-    .patch(Car.updateVehicle);
+    app.route("/motorcycles/:car_id")
+    .patch(Motorcycle.updateVehicle);
 
 /**
  * @swagger
- * /cars:
+ * /motorcycles:
  *   get:
- *     summary: List all of Cars
- *     tags: [Cars]
+ *     summary: List all of Motorcycles
+ *     tags: [Motorcycles]
  *     responses:
  *       200:
- *         description: The list Car.
+ *         description: The list Motorcycle.
  *         content:
  *           application/json:
  *             schema:
  *               type: array
  *               items:
- *                  $ref: '#/components/schemas/Cars'
+ *                  $ref: '#/components/schemas/motorcycles'
  *       500:
  *         description: Some server error
  *         content:
@@ -116,29 +111,29 @@ module.exports = (app) => {
  *               message: "Error server."
  *
  */
-    app.route("/cars")
-        .get(Car.listenAllVehicles);
+    app.route("/motorcycles")
+        .get(Motorcycle.listenAllVehicles);
 
 /**
  * @swagger
- * /car/{car_id}:
+ * /motorcycle/{car_id}:
  *   get:
- *     summary: One Car
- *     tags: [Cars]
+ *     summary: One Motorcycle
+ *     tags: [Motorcycles]
  *     parameters:
  *         - in: path
  *           name: car_id
  *           required: true
  *           schema:
  *             type: string
- *             description: Car ID
+ *             description: Motorcycle ID
  *     responses:
  *       200:
- *         description: One Car.
+ *         description: One Motorcycle.
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/Cars'
+ *               $ref: '#/components/schemas/motorcycles'
  *       500:
  *         description: Some server error
  *         content:
@@ -147,26 +142,26 @@ module.exports = (app) => {
  *               message: "Error server."
  *
  */
-    app.route("/car/:car_id")
-        .get(Car.oneVehicle);
+    app.route("/motorcycle/:car_id")
+        .get(Motorcycle.oneVehicle);
 
 
 /**
  * @swagger
- * /car/{car_id}:
+ * /motorcycle/{car_id}:
  *   delete:
  *     summary: Delete
- *     tags: [Cars]
+ *     tags: [Motorcycles]
  *     parameters:
  *         - in: path
  *           name: car_id
  *           required: true
  *           schema:
  *             type: string
- *           description: Car ID to retrieve
+ *           description: Motorcycle ID to retrieve
  *     responses:
  *       204:
- *         description: Delete a car
+ *         description: Delete a motorcycle
  *       500:
  *         description: Some server error
  *         content:
@@ -177,6 +172,6 @@ module.exports = (app) => {
  */ 
 
 
-app.route("/car/:car_id")
-    .delete(Car.deleteAVehicle);
+app.route("/motorcycle/:car_id")
+    .delete(Motorcycle.deleteAVehicle);
 }
