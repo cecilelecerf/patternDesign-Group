@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
-let motorcycleSchema = new Schema ({
+let vehicleSchema = new Schema ({
     releaseYear: {
         type: Date,
     },
@@ -23,4 +23,4 @@ let motorcycleSchema = new Schema ({
 
 });
 
-module.exports = mongoose.model("Motorcycle", motorcycleSchema)
+module.exports = mongoose.model("Vehicle", vehicleSchema)
