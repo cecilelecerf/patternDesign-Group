@@ -10,9 +10,21 @@ class VehicleController {
     }
      
     createVehicle = async (req, res) => {
-        console.log(req.body, res.body);
-        res.status(200).json('ok');
+        try {
+            const vehicleData = req.body;
+            const newVehicle = new Vehicle(vehicleData);
+            await newVehicle.save();
+    
+            if (res && res.status) {
+                res.status(200).json('ok');
+            }
+        } catch (error) {
+            if (res && res.status) {
+                res.status(500).json({ message: error.message });
+            }
+        }
     };
+    
     
     updateVehicle = async (req, res) => {
         try {
@@ -60,22 +72,6 @@ class VehicleController {
             res.json({message: "Server error."});
         }
     };
-
-    uploadCsvData = async (req, res) => {
-        try {
-            const adapter = new CsvAdapter('../data/data.csv');
-            const csvData = await adapter.readCsv();
-            const vehicles = await adapter.convertToVehicles(csvData);
-
-            for (const vehicle of vehicles) {
-                await vehicle.save();
-            }
-
-            res.status(200).json({ message: 'Véhicules importés avec succès' });
-        } catch (error) {
-            res.status(500).json({ message: 'Erreur lors de l\'importation des données CSV', error: error.message });
-        }
-    }
 };
 
 module.exports = VehicleController;

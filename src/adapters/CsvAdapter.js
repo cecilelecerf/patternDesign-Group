@@ -6,23 +6,24 @@ class CsvAdapter {
         this.fileName = fileName;
     }
     
-    async readCsv() {
-        try{
+    async importCsvToVehicles() {
+        try {
             const csvData = await CsvParser.readCsvFile(this.fileName);
-            return this.convertToVehicles(csvData);
-        }catch(error){
-            console.log(error)
+            const vehicles = csvData.map(data => new Vehicle({
+                brand: data.brand,
+                model: data.model,
+                releaseYear: data.releaseYear,
+                salesNumber: data.salesNumber,
+            }));
+
+            for (const vehicle of vehicles) {
+                await vehicle.save();
+            }
+            return { success: true, message: 'Véhicules importés avec succès' };
+        } catch (error) {
+            return { success: false, message: 'Erreur lors de l\'importation', error: error.message };
         }
-    }
-    
-    convertToVehicles(csvData) {
-        return csvData.map(data => new Vehicle({
-            brand: data.brand,
-            model: data.model,
-            releaseYear: data.releaseYear,
-            salesNumber: data.salesNumber,
-        }));
     }
 }
 
-module.exports = CsvAdapter;   
+module.exports = CsvAdapter;
