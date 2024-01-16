@@ -1,5 +1,5 @@
 const Vehicle = require("../models/VehicleModel")
-const LoggerObserver = require("../loggerObserver")
+const LoggerObserver = require("../services/observer/loggerObserver")
 
 class VehicleController {
     constructor(brand, model, releaseYear = null, salesNumber = null){
@@ -37,7 +37,7 @@ class VehicleController {
                 
             }
             res.status(200).json({ message: `Vehicle updated with id: ${vehicle.id}`, vehicle });
-            this.loggerObserver.update('Vehicle updated with id: ${vehicle.id}', vehicle);
+            this.loggerObserver.update(`Vehicle updated with id: ${vehicle.id}`, vehicle);
 
         } catch (error) {
             res.status(500).json({ message: 'Error updating the vehicle' });
