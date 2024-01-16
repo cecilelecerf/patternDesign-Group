@@ -41,7 +41,7 @@ class CarController {
             res.status(500).json({message: "Error server."})
         }
     }
-    // Controller function to delete a car
+    // Controller method to delete a car
     deleteACar = async (req,res) => {
         try {
             // Deleting a car based on the provided car ID
@@ -53,6 +53,21 @@ class CarController {
             res.json({message: "Server error."});
         }
     };
+
+    // Method to return the number of doors
+    numberOfDoors = async (req,res) => {
+        try{
+            const car = await Car.findById(req.params.car_id);
+            if(!car){
+                res.status(404).json({message: "Car not found"})
+                res.end()
+            }
+            res.status(200).json(`The number of doors in this car is : ${car.doorsNumber}`)
+        } catch(error){
+            res.status(500);
+            res.json({message: "Server error."});
+        }
+    }
 };
 
 module.exports = new CarController();
