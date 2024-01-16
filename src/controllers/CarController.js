@@ -2,14 +2,8 @@ const Car =  require("../models/CarModel");
 class CarController {
 
     createCar = async (req, res) => {
-        const newCar = new Car({releaseYear : req.body.releaseYear, salesNumber : req.body.salesNumber, brand : req.body.brand, model : req.body.model, doorsNumber : req.body.doorsNumber });
-        try {
-            const car = await newCar.save();
-            res.status(201).json({ message: `Car created with id: ${car.id}` });        
-        } 
-        catch (error) {
-            res.status(500).json({ message: error });
-        }
+        console.log(req.body, res.body);
+        res.status(200).json('ok');
     };
     
     updateCar = async (req, res) => {
