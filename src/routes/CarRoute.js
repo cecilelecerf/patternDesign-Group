@@ -43,18 +43,19 @@ module.exports = (app) => {
 /**
  * @swagger
  * /cars:
- *   get:
- *     summary: Create a Car
- *     tags: [Car]
+ *   post:
+ *     summary: Create a car
+ *     tags: [Cars]
+ *     parameters:
+ *         - in: path
+ *           name: car_id
+ *           required: true
+ *           schema:
+ *             type: string
+ *           description: Create a car
  *     responses:
- *       200:
- *         description: Create a Car.
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                  $ref: '#/components/schemas/Cars'
+ *       204:
+ *         description: Create a car
  *       500:
  *         description: Some server error
  *         content:
@@ -62,26 +63,28 @@ module.exports = (app) => {
  *             example:
  *               message: "Error server."
  *
- */
+ */ 
+
     app.route("/cars")
         .post(Car.createVehicle);
 
         
 /**
  * @swagger
- * /cars:
- *   get:
- *     summary: Update a Car
+ * /cars/{car_id}:
+ *   patch:
+ *     summary: Update a car
  *     tags: [Cars]
+ *     parameters:
+ *         - in: path
+ *           name: car_id
+ *           required: true
+ *           schema:
+ *             type: string
+ *           description: Update a car
  *     responses:
- *       200:
- *         description: Update a Car.
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                  $ref: '#/components/schemas/Cars'
+ *       204:
+ *         description: Update a car
  *       500:
  *         description: Some server error
  *         content:
@@ -89,7 +92,7 @@ module.exports = (app) => {
  *             example:
  *               message: "Error server."
  *
- */
+ */ 
     app.route("/cars/:car_id")
     .patch(Car.updateVehicle);
 
@@ -97,17 +100,18 @@ module.exports = (app) => {
  * @swagger
  * /cars:
  *   get:
- *     summary: List all of Cars
+ *     summary: Get all cars
  *     tags: [Cars]
+ *     parameters:
+ *         - in: path
+ *           name: car_id
+ *           required: true
+ *           schema:
+ *             type: string
+ *           description: Get all cars
  *     responses:
- *       200:
- *         description: The list Car.
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                  $ref: '#/components/schemas/Cars'
+ *       204:
+ *         description: Get all cars
  *       500:
  *         description: Some server error
  *         content:
@@ -115,7 +119,7 @@ module.exports = (app) => {
  *             example:
  *               message: "Error server."
  *
- */
+ */ 
     app.route("/cars")
         .get(Car.listenAllVehicles);
 
@@ -147,7 +151,7 @@ module.exports = (app) => {
  *               message: "Error server."
  *
  */
-    app.route("/car/:car_id")
+    app.route("/cars/:car_id")
         .get(Car.oneVehicle);
 
 
@@ -177,6 +181,6 @@ module.exports = (app) => {
  */ 
 
 
-app.route("/car/:car_id")
+app.route("/cars/:car_id")
     .delete(Car.deleteAVehicle);
 }

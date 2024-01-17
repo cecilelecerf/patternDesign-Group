@@ -8,7 +8,7 @@ module.exports = (app) => {
      * /upload-csv:
      *   post:
      *     summary: Importer des véhicules à partir d'un fichier CSV
-     *     tags: [Cars]
+     *     tags: [CSV]
      *     requestBody:
      *       required: true
      *       content:

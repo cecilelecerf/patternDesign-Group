@@ -1,4 +1,3 @@
-// LoggerObserver.js
 const fs = require('fs');
 
 class LoggerObserver {

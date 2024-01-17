@@ -37,9 +37,9 @@ module.exports = (app) => {
 /**
  * @swagger
  * /motorcycles:
- *   get:
+ *   post:
  *     summary: Create a Motorcycle
- *     tags: [Motorcycle]
+ *     tags: [Motorcycles]
  *     responses:
  *       200:
  *         description: Create a Motorcycle.
@@ -48,7 +48,7 @@ module.exports = (app) => {
  *             schema:
  *               type: array
  *               items:
- *                  $ref: '#/components/schemas/motorcycles'
+ *                  $ref: '#/components/schemas/Motorcycles'
  *       500:
  *         description: Some server error
  *         content:
@@ -60,10 +60,10 @@ module.exports = (app) => {
     app.route("/motorcycles")
         .post(Motorcycle.createVehicle);
 
-        /**
+/**
  * @swagger
  * /motorcycles:
- *   get:
+ *   patch:
  *     summary: Update a Motorcycle
  *     tags: [Motorcycles]
  *     responses:
@@ -74,7 +74,7 @@ module.exports = (app) => {
  *             schema:
  *               type: array
  *               items:
- *                  $ref: '#/components/schemas/motorcycles'
+ *                  $ref: '#/components/schemas/Motorcycles'
  *       500:
  *         description: Some server error
  *         content:
@@ -83,7 +83,7 @@ module.exports = (app) => {
  *               message: "Error server."
  *
  */
-    app.route("/motorcycles/:car_id")
+    app.route("/motorcycles/:motorcycle_id")
     .patch(Motorcycle.updateVehicle);
 
 /**
@@ -114,7 +114,7 @@ module.exports = (app) => {
 
 /**
  * @swagger
- * /motorcycle/{car_id}:
+ * /motorcycles/{car_id}:
  *   get:
  *     summary: One Motorcycle
  *     tags: [Motorcycles]
@@ -140,13 +140,13 @@ module.exports = (app) => {
  *               message: "Error server."
  *
  */
-    app.route("/motorcycle/:car_id")
+    app.route("/motorcycles/:motorcycle_id")
         .get(Motorcycle.oneVehicle);
 
 
 /**
  * @swagger
- * /motorcycle/{car_id}:
+ * /motorcycles/{car_id}:
  *   delete:
  *     summary: Delete
  *     tags: [Motorcycles]
@@ -170,6 +170,6 @@ module.exports = (app) => {
  */ 
 
 
-app.route("/motorcycle/:car_id")
+app.route("/motorcycles/:motorcycles_id")
     .delete(Motorcycle.deleteAVehicle);
 }
